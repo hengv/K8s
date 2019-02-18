@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rg-pd-pod
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: rg-pd-container
+    volumeMounts:
+    - mountPath: /test-pd
+      name: rg-pd-volume
+  volumes:
+  - name: rg-pd-volume
+    persistentVolumeClaim:
+      claimName: rg-pd-pvc

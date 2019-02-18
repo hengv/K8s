@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rg-pd-pod
+spec:
+  containers:
+  - image: nginx
+    name: rg-pd-container
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: rg-pd-volume
+  volumes:
+  - name: rg-pd-volume
+    persistentVolumeClaim:
+      claimName: rg-pd-pvc

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rg-pd-pvc
+spec:
+  storageClassName: rg-pd-sc
+  volumeName: rg-pd-pv
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200G
