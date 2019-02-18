@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rgpddplymt
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: nginx
+        app: nginx
+    spec:
+      containers:
+      - image: nginx
+        name: rgpdcontainer
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: rgpdvolume
+      volumes:
+      - name: rgpdvolume
+        persistentVolumeClaim:
+          claimName: rgpdpvc
+
